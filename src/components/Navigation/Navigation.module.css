@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid black;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+    background-color: #f3f3f3;
+}
+
+.nav {
+    display: flex;
+}
+
+
+.link {
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+
+.active {
+    color: white;
+    background-color: rgb(70, 95, 69);
+}
