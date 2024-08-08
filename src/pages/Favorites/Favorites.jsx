@@ -1,5 +1,4 @@
-// src/pages/Favorites.js
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import CamperCard from "../../components/CamperCard/CamperCard";
@@ -11,7 +10,9 @@ const Favorites = () => {
   useEffect(() => {
     const fetchFavoriteCampers = async () => {
       const promises = favorites.map((id) =>
-        axios.get(`https://your-mockapi-url.com/advert/${id}`)
+        axios.get(
+          `https://66b54098b5ae2d11eb632a51.mockapi.io/adverts/adverts/${id}`
+        )
       );
       const results = await Promise.all(promises);
       setFavoriteCampers(results.map((res) => res.data));

@@ -15,7 +15,7 @@ const Catalog = () => {
     const fetchCampers = async () => {
       try {
         const response = await axios.get(
-          `https://66b5027e9f9169621ea5303a.mockapi.io/advert?page=${currentPage}&limit=4`
+          `https://66b54098b5ae2d11eb632a51.mockapi.io/adverts/adverts?page=${currentPage}&limit=4`
         );
         dispatch(setCampers(response.data));
       } catch (error) {
@@ -28,7 +28,7 @@ const Catalog = () => {
   const handleLoadMore = async () => {
     try {
       const response = await axios.get(
-        `https://66b5027e9f9169621ea5303a.mockapi.io/advert?page=${
+        `https://66b54098b5ae2d11eb632a51.mockapi.io/adverts/adverts?page=${
           currentPage + 1
         }&limit=4`
       );
