@@ -10,9 +10,7 @@ const Favorites = () => {
   useEffect(() => {
     const fetchFavoriteCampers = async () => {
       const promises = favorites.map((id) =>
-        axios.get(
-          `https://66b54098b5ae2d11eb632a51.mockapi.io/adverts/adverts/${id}`
-        )
+        axios.get(`https://66b54098b5ae2d11eb632a51.mockapi.io/adverts/${id}`)
       );
       const results = await Promise.all(promises);
       setFavoriteCampers(results.map((res) => res.data));
@@ -23,11 +21,13 @@ const Favorites = () => {
   return (
     <div>
       <h1>Favorites</h1>
-      <div className="camper-grid">
+      <ul className="camper-grid">
         {favoriteCampers.map((camper) => (
-          <CamperCard key={camper._id} camper={camper} />
+          <li key={camper._id}>
+            <CamperCard camper={camper} />
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

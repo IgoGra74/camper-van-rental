@@ -41,11 +41,13 @@ const Catalog = () => {
   return (
     <div>
       <h1>Catalog</h1>
-      <div className="camper-grid">
+      <ul className="camper-grid">
         {campers.map((camper) => (
-          <CamperCard key={camper.id} camper={camper} />
+          <li key={camper.id}>
+            <CamperCard camper={camper} />
+          </li>
         ))}
-      </div>
+      </ul>
       <button onClick={handleLoadMore}>Load More</button>
       <Modal />
     </div>
