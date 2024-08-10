@@ -1,57 +1,64 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setModalCamper } from "../../redux/store";
+import Modal from "react-modal";
+import { Formik, Field, Form } from "formik";
+import * as Yup from "yup";
 
-const Modal = () => {
-  const dispatch = useDispatch();
-  const camper = useSelector((state) => state.modalCamper);
+const BookingSchema = Yup.object().shape({
+  name: Yup.string().required("Required"),
+  email: Yup.string().email("Invalid email").required("Required"),
+  bookingDate: Yup.date().required("Required"),
+  comment: Yup.string(),
+});
 
-  useEffect(() => {
-    const handleEscape = (event) => {
-      if (event.key === "Escape") {
-        dispatch(setModalCamper(null));
-      }
-    };
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, [dispatch]);
-
-  if (!camper) return null;
-
-  const closeModal = () => {
-    dispatch(setModalCamper(null));
-  };
-
-  const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
-
+const CamperModal = ({ isOpen, onRequestClose, camper }) => {
   return (
-    <div className="modal-backdrop" onClick={handleBackdropClick}>
-      <div className="modal-content">
-        <button className="close-button" onClick={closeModal}>
-          &times;
-        </button>
-        <h2>{camper.name}</h2>
-        <p>{camper.description}</p>
-        <h3>Reviews:</h3>
-        <ul>
-          {camper.reviews.map((review, index) => (
-            <li key={index}>{review}</li>
-          ))}
-        </ul>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input type="text" placeholder="Name" required />
-          <input type="email" placeholder="Email" required />
-          <input type="date" required />
-          <textarea placeholder="Comment"></textarea>
-          <button type="submit">Book Now</button>
-        </form>
-      </div>
-    </div>
+    <Modal isOpen={isOpen} onRequestClose={onRequestClose} ariaHideApp={false}>
+      <button onClick={onRequestClose}>Close</button>
+      <h2>{camper.name}</h2>
+      <p>{camper.description}</p>
+      <Formik
+        initialValues={{
+          name: "",
+          email: "",
+          bookingDate: "",
+          comment: "",
+        }}
+        validationSchema={BookingSchema}
+        onSubmit={(values, { resetForm }) => {
+          console.log("Booking:", values);
+          alert("Booking successful");
+          resetForm();
+          onRequestClose();
+        }}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <div>
+              <label htmlFor="name">Name</label>
+              <Field name="name" />
+              {errors.name && touched.name ? <div>{errors.name}</div> : null}
+            </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <Field name="email" type="email" />
+              {errors.email && touched.email ? <div>{errors.email}</div> : null}
+            </div>
+            <div>
+              <label htmlFor="bookingDate">Booking Date</label>
+              <Field name="bookingDate" type="date" />
+              {errors.bookingDate && touched.bookingDate ? (
+                <div>{errors.bookingDate}</div>
+              ) : null}
+            </div>
+            <div>
+              <label htmlFor="comment">Comment</label>
+              <Field name="comment" as="textarea" />
+            </div>
+            <button type="submit">Submit</button>
+          </Form>
+        )}
+      </Formik>
+    </Modal>
   );
 };
 
-export default Modal;
+export default CamperModal;

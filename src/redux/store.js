@@ -1,55 +1,26 @@
-// // src/store.js
-// import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-// const initialState = {
-//   campers: [],
-//   favorites: JSON.parse(localStorage.getItem("favorites") || "[]"),
-//   currentPage: 1,
-//   modalCamper: null,
-// };
-
-// const campersSlice = createSlice({
-//   name: "campers",
-//   initialState,
-//   reducers: {
-//     setCampers(state, action) {
-//       state.campers = action.payload;
-//     },
-//     loadMoreCampers(state, action) {
-//       state.campers = [...state.campers, ...action.payload];
-//       state.currentPage += 1;
-//     },
-//     toggleFavorite(state, action) {
-//       const id = action.payload;
-//       const index = state.favorites.indexOf(id);
-//       if (index > -1) {
-//         state.favorites.splice(index, 1);
-//       } else {
-//         state.favorites.push(id);
-//       }
-//       localStorage.setItem("favorites", JSON.stringify(state.favorites));
-//     },
-//     setModalCamper(state, action) {
-//       state.modalCamper = action.payload;
-//     },
-//   },
-// });
-
-// export const { setCampers, loadMoreCampers, toggleFavorite, setModalCamper } =
-//   campersSlice.actions;
-
-// const store = configureStore({
-//   reducer: campersSlice.reducer,
-// });
-
-// export default store;
+// src/store.js
 import { configureStore } from "@reduxjs/toolkit";
-import favoritesReducer from "./favoritesSlice.js";
+import { combineReducers } from "redux";
+import storage from "redux-persist/lib/storage";
+import { persistReducer } from "redux-persist";
+import { advertsSlice } from "./advertsSlice.js";
+import { favoritesSlice } from "./favoritesSlice.js";
+
+const persistConfig = {
+  key: "root",
+  storage,
+  whitelist: ["favorites"],
+};
+
+const rootReducer = combineReducers({
+  adverts: advertsSlice.reducer,
+  favorites: favoritesSlice.reducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    favorites: favoritesReducer,
-  },
+  reducer: persistedReducer,
 });
 
 export default store;

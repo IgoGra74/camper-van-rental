@@ -1,5 +1,5 @@
-import css from "./Home.module.css";
-const Home = () => {
+import css from "./HomePage.module.css";
+const HomePage = () => {
   return (
     <div className={css.home}>
       <h1 className={css.title}>Welcome to Camper Rental</h1>
@@ -22,4 +22,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
