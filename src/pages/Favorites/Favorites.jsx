@@ -1,35 +1,56 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+// import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useSelector } from "react-redux";
+// import CamperCard from "../../components/CamperCard/CamperCard";
+
+// const Favorites = () => {
+//   const favorites = useSelector((state) => state.favorites);
+//   const [favoriteCampers, setFavoriteCampers] = useState([]);
+
+//   useEffect(() => {
+//     const fetchFavoriteCampers = async () => {
+//       const promises = favorites.map((id) =>
+//         axios.get(`https://66b54098b5ae2d11eb632a51.mockapi.io/adverts/${id}`)
+//       );
+//       const results = await Promise.all(promises);
+//       setFavoriteCampers(results.map((res) => res.data));
+//     };
+//     fetchFavoriteCampers();
+//   }, [favorites]);
+
+//   return (
+//     <div>
+//       <h1>Favorites</h1>
+//       <ul className="camper-grid">
+//         {favoriteCampers.map((camper) => (
+//           <li key={camper.id}>
+//             <CamperCard camper={camper} />
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// export default Favorites;import React from "react";
 import { useSelector } from "react-redux";
 import CamperCard from "../../components/CamperCard/CamperCard";
 
-const Favorites = () => {
-  const favorites = useSelector((state) => state.favorites);
-  const [favoriteCampers, setFavoriteCampers] = useState([]);
-
-  useEffect(() => {
-    const fetchFavoriteCampers = async () => {
-      const promises = favorites.map((id) =>
-        axios.get(`https://66b54098b5ae2d11eb632a51.mockapi.io/adverts/${id}`)
-      );
-      const results = await Promise.all(promises);
-      setFavoriteCampers(results.map((res) => res.data));
-    };
-    fetchFavoriteCampers();
-  }, [favorites]);
+function Favorites() {
+  const favorites = useSelector((state) => state.favorites.items);
 
   return (
     <div>
       <h1>Favorites</h1>
-      <ul className="camper-grid">
-        {favoriteCampers.map((camper) => (
-          <li key={camper._id}>
-            <CamperCard camper={camper} />
-          </li>
-        ))}
-      </ul>
+      {favorites.length > 0 ? (
+        favorites.map((camper) => (
+          <CamperCard key={camper.id} camper={camper} />
+        ))
+      ) : (
+        <p>There are no featured campers yet.</p>
+      )}
     </div>
   );
-};
+}
 
 export default Favorites;
