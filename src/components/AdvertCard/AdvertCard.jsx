@@ -27,8 +27,9 @@ const AdvertCard = ({ advert }) => {
 
   return (
     <div className={css.card}>
-      <img className={css.img} src={advert.gallery[0]} alt={advert.name} />
-
+      <div>
+        <img className={css.img} src={advert.gallery[0]} alt={advert.name} />
+      </div>
       <div className={css.container}>
         <div className={css.info}>
           <div className={css.infoPrice}>

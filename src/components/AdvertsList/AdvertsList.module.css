@@ -4,7 +4,7 @@
     gap: 32px;
     justify-content: center;
     align-items: center;
-    margin: 40px auto;
+    margin: 0px auto;
 }
 
 .container {
@@ -16,6 +16,16 @@
 
 /* .camperMain {
     text-align: center;
+} */
+/* .item {
+    width: 888px;
+    height: 358px;
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    border-radius: 20px;
+    justify-content: space-between;
 } */
 
 .button {
