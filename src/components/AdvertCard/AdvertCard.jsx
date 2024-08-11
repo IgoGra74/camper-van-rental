@@ -11,11 +11,11 @@ const AdvertCard = ({ advert }) => {
   const favorites = useSelector((state) => state.favorites.items);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const isFavorite = favorites.some((item) => item.id === advert.id);
+  const isFavorite = favorites.some((item) => item._id === advert._id);
 
   const handleFavoriteClick = () => {
     if (isFavorite) {
-      dispatch(removeFromFavorites(advert.id));
+      dispatch(removeFromFavorites(advert._id));
     } else {
       dispatch(addToFavorites(advert));
     }
@@ -24,6 +24,8 @@ const AdvertCard = ({ advert }) => {
   return (
     <div className="advert-card">
       <h2>{advert.name}</h2>
+      <p>Location: {advert.location}</p>
+      <img src={advert.gallery[0]} alt={advert.name} width={300} height={200} />
       <p>Price: {advert.price.toFixed(2)}</p>
       <button onClick={handleFavoriteClick}>
         {isFavorite ? "Remove from Favorites" : "Add to Favorites"}

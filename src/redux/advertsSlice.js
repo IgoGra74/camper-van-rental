@@ -5,14 +5,13 @@ export const fetchAdverts = createAsyncThunk(
   "adverts/fetchAdverts",
   async (page) => {
     const response = await axios.get(
-      `
-https://66b79fbf7f7b1c6d8f1c5db1.mockapi.io/adverts?page=${page}&limit=4`
+      `https://66b79fbf7f7b1c6d8f1c5db1.mockapi.io/adverts?page=${page}&limit=4`
     );
     return response.data;
   }
 );
 
-export const advertsSlice = createSlice({
+const advertsSlice = createSlice({
   name: "adverts",
   initialState: {
     items: [],
@@ -30,16 +29,13 @@ export const advertsSlice = createSlice({
       .addCase(fetchAdverts.pending, (state) => {
         state.status = "loading";
       })
-      // .addCase(fetchAdverts.fulfilled, (state, action) => {
-      //   state.status = "succeeded";
-      //   const newItems = action.payload.filter(
-      //     (advert) => !state.items.some((item) => item.id === advert.id)
-      //   );
-      //   state.items = [...state.items, ...newItems];
-      // })
       .addCase(fetchAdverts.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.items = [...state.items, ...action.payload];
+        if (state.currentPage === 1) {
+          state.items = action.payload;
+        } else {
+          state.items = state.items.concat(action.payload);
+        }
       })
       .addCase(fetchAdverts.rejected, (state, action) => {
         state.status = "failed";

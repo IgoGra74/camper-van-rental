@@ -146,3 +146,144 @@ const CatalogPage = () => {
 };
 
 export default CatalogPage;
+// import { useDispatch, useSelector } from "react-redux";
+// import { fetchAdverts, loadMore } from "../../redux/advertsSlice.js";
+// import AdvertCard from "../../components/AdvertCard/AdvertCard.jsx";
+// import Loader from "../../components/Loader/Loader.jsx";
+// import { useEffect, useState } from "react";
+
+// const CatalogPage = () => {
+//   const dispatch = useDispatch();
+//   const adverts = useSelector((state) => state.adverts.items);
+//   const status = useSelector((state) => state.adverts.status);
+//   const error = useSelector((state) => state.adverts.error);
+//   const currentPage = useSelector((state) => state.adverts.currentPage);
+
+//   const [locationFilter, setLocationFilter] = useState("");
+//   const [equipmentFilter, setEquipmentFilter] = useState([]);
+//   const [typeFilter, setTypeFilter] = useState("");
+
+//   useEffect(() => {
+//     if (status === "idle") {
+//       dispatch(fetchAdverts(currentPage));
+//     }
+//   }, [dispatch, currentPage, status]);
+
+//   const handleLoadMore = () => {
+//     dispatch(loadMore());
+
+//     dispatch(fetchAdverts(currentPage + 1));
+//   };
+
+//   const handleLocationChange = (event) => {
+//     setLocationFilter(event.target.value);
+//   };
+
+//   const handleEquipmentChange = (event) => {
+//     const { value, checked } = event.target;
+//     setEquipmentFilter((prev) =>
+//       checked ? [...prev, value] : prev.filter((item) => item !== value)
+//     );
+//   };
+
+//   const handleTypeChange = (event) => {
+//     setTypeFilter(event.target.value);
+//   };
+
+//   const filteredAdverts = adverts.filter((advert) => {
+//     const matchesLocation = locationFilter
+//       ? advert.location.toLowerCase().includes(locationFilter.toLowerCase())
+//       : true;
+
+//     const matchesEquipment = equipmentFilter.length
+//       ? equipmentFilter.every((equipment) =>
+//           advert.equipment.includes(equipment)
+//         )
+//       : true;
+
+//     const matchesType = typeFilter ? advert.type === typeFilter : true;
+
+//     return matchesLocation && matchesEquipment && matchesType;
+//   });
+
+//   return (
+//     <div>
+//       <h1>Camper Catalog</h1>
+
+//       <div>
+//         <input
+//           type="text"
+//           placeholder="Filter by location"
+//           value={locationFilter}
+//           onChange={handleLocationChange}
+//         />
+
+//         <div>
+//           <label>
+//             <input
+//               type="checkbox"
+//               value="kitchen"
+//               checked={equipmentFilter.includes("kitchen")}
+//               onChange={handleEquipmentChange}
+//             />
+//             Kitchen
+//           </label>
+//           <label>
+//             <input
+//               type="checkbox"
+//               value="bathroom"
+//               checked={equipmentFilter.includes("bathroom")}
+//               onChange={handleEquipmentChange}
+//             />
+//             Bathroom
+//           </label>
+//           <label>
+//             <input
+//               type="checkbox"
+//               value="AC"
+//               checked={equipmentFilter.includes("AC")}
+//               onChange={handleEquipmentChange}
+//             />
+//             Air Conditioning
+//           </label>
+//         </div>
+
+//         <div>
+//           <label>
+//             <input
+//               type="radio"
+//               value="luxury"
+//               checked={typeFilter === "luxury"}
+//               onChange={handleTypeChange}
+//             />
+//             Luxury
+//           </label>
+//           <label>
+//             <input
+//               type="radio"
+//               value="standard"
+//               checked={typeFilter === "standard"}
+//               onChange={handleTypeChange}
+//             />
+//             Standard
+//           </label>
+//         </div>
+//       </div>
+
+//       {status === "loading" && <Loader />}
+//       {status === "failed" && <p>{error}</p>}
+//       <ul>
+//         {filteredAdverts.map((advert) => (
+//           <li key={advert.id}>
+//             <AdvertCard advert={advert} />
+//           </li>
+//         ))}
+//       </ul>
+//       {status !== "loading" && (
+//         <button onClick={handleLoadMore}>Load More</button>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default CatalogPage;

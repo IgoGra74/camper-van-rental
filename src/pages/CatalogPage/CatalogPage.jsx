@@ -12,13 +12,14 @@ const CatalogPage = () => {
   const currentPage = useSelector((state) => state.adverts.currentPage);
 
   useEffect(() => {
-    console.log(`Fetching page ${currentPage}`);
-    dispatch(fetchAdverts(currentPage));
-  }, [dispatch, currentPage]);
+    if (status === "idle") {
+      dispatch(fetchAdverts(currentPage));
+    }
+  }, [dispatch, currentPage, status]);
 
   const handleLoadMore = () => {
-    console.log("Loading more...");
     dispatch(loadMore());
+    dispatch(fetchAdverts(currentPage + 1));
   };
 
   return (
@@ -28,7 +29,7 @@ const CatalogPage = () => {
       {status === "failed" && <p>{error}</p>}
       <ul>
         {adverts.map((advert) => (
-          <li key={advert.id}>
+          <li key={advert._id}>
             <AdvertCard advert={advert} />
           </li>
         ))}
