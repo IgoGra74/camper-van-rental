@@ -1,0 +1,17 @@
+.button {
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+.heart {
+    fill: none;
+    stroke: #101828;
+}
+
+.heartFill {
+    fill: #e44848;
+    stroke: #e44848;
+}
