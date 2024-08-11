@@ -4,7 +4,7 @@
 // import Loader from "../../components/Loader/Loader.jsx";
 // import { useEffect } from "react";
 import css from "./CatalogPage.module.css";
-import SearchBar from "../../components/SearchBar/SearchBar.jsx";
+// import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 import AdvertsList from "../../components/AdvertsList/AdvertsList.jsx";
 
 const CatalogPage = () => {
@@ -27,12 +27,7 @@ const CatalogPage = () => {
 
   return (
     <div className={css.container}>
-      <div>
-        <SearchBar />
-      </div>
-      <div className={css.adverts}>
-        <AdvertsList />
-      </div>
+      <AdvertsList />
     </div>
   );
 };

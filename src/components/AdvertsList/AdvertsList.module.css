@@ -7,6 +7,13 @@
     margin: 40px auto;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* .camperMain {
     text-align: center;
 } */
@@ -23,6 +30,7 @@
     letter-spacing: -0.01em;
     background-color: inherit;
     margin: 20px auto;
+
 }
 
 .button:hover {

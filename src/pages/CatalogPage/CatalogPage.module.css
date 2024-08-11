@@ -1,13 +1,12 @@
 .container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 50px;
+    gap: 64px;
+    justify-content: center;
 }
 
 
 
-.adverts {
+/* .adverts {
     min-width: 288px;
     max-width: 375px;
     width: 100%;
@@ -60,4 +59,4 @@
 .button:active,
 .button:focus-visible {
     border-color: #E44848;
-}
+} */

@@ -1,0 +1,32 @@
+.list {
+    width: 526px;
+    height: 96px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.list li {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    border-radius: 100px;
+    padding: 12px 18px;
+    width: auto;
+    height: 44px;
+    background-color: #f2f4f7;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: #101828;
+}

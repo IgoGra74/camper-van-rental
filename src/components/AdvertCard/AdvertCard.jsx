@@ -42,16 +42,13 @@ const AdvertCard = ({ advert }) => {
                 })}
               </p>
               <ButtonLike advert={advert} />
-              {/* <button onClick={handleFavoriteClick}>
-                {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-              </button> */}
             </div>
           </div>
           <ReviewsLocationInfo advert={advert} />
         </div>
         <p className={css.description}>{advert.description}</p>
         <Categories advert={advert} />
-        <button className={css.button} onClick={() => setIsModalOpen(true)}>
+        <button className={css.buttonMore} onClick={() => setIsModalOpen(true)}>
           Show more
         </button>
       </div>

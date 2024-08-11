@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 8px;
+}
+
+.star {
+    fill: #ffc531;
+}
+
+.locationIcon {
+    fill: none;
+    stroke: #101828;
+}
+
+.button {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    text-underline-position: under;
+    color: #101828;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    width: 133px;
+    height: 30px;
+    box-sizing: border-box;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    cursor: auto;
+}
+
+.location {
+    min-width: 118px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

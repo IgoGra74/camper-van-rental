@@ -4,6 +4,8 @@ import {
   removeFromFavorites,
 } from "../../redux/favoritesSlice";
 import css from "./ButtonLike.module.css";
+import icons from "../../assets/icons.svg";
+
 const ButtonLike = ({ advert }) => {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.items);
@@ -17,7 +19,13 @@ const ButtonLike = ({ advert }) => {
   };
   return (
     <button className={css.button} onClick={handleFavoriteClick}>
-      {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+      <svg
+        className={isFavorite ? css.heartFill : css.heart}
+        width="24"
+        height="24"
+      >
+        <use href={`${icons}#icon-heart`} />
+      </svg>
     </button>
   );
 };

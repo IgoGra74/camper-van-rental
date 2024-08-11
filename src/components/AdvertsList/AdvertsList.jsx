@@ -23,7 +23,7 @@ const AdvertsList = () => {
     dispatch(fetchAdverts(currentPage + 1));
   };
   return (
-    <div>
+    <div className={css.container}>
       {status === "loading" && <Loader />}
       {status === "failed" && <p>{error}</p>}
       <ul className={css.list}>
