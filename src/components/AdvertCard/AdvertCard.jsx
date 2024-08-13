@@ -33,7 +33,7 @@ const AdvertCard = ({ advert }) => {
       <div className={css.container}>
         <div className={css.info}>
           <div className={css.infoPrice}>
-            <p className={css.name}>{advert.name}</p>
+            <h2 className={css.name}>{advert.name}</h2>
             <div className={css.like}>
               <p className={css.price}>
                 €{" "}

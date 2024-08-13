@@ -1,7 +1,7 @@
 .list {
     width: 526px;
-    height: 96px;
-    overflow: hidden;
+    /* height: 96px; */
+    /* overflow: hidden; */
     display: flex;
     flex-wrap: wrap;
     gap: 8px;

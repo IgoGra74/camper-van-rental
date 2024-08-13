@@ -1,4 +1,4 @@
-import categIcons from "../assets/categIcons.svg";
+import categIcons from "../assets/icons/categIcons.svg";
 
 export const categoryIcons = {
   ac: `${categIcons}#icon-ac`,

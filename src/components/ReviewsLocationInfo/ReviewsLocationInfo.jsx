@@ -1,5 +1,5 @@
 import css from "./ReviewsLocationInfo.module.css";
-import icons from "../../assets/icons.svg";
+import icons from "../../assets/icons/icons.svg";
 const ReviewsLocationInfo = ({ advert }) => {
   return (
     <div className={css.container}>

@@ -4,7 +4,7 @@ import {
   removeFromFavorites,
 } from "../../redux/favoritesSlice";
 import css from "./ButtonLike.module.css";
-import icons from "../../assets/icons.svg";
+import icons from "../../assets/icons/icons.svg";
 
 const ButtonLike = ({ advert }) => {
   const dispatch = useDispatch();
